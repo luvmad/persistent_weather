@@ -1,10 +1,32 @@
 local currentWeather = "CLEAR"
+local json = require "json"
 local currentHour = 12
 local currentMinute = 0
 local specialWeather = nil
 local specialPersistent = false
 
 local SYNC_INTERVAL = 60000
+local translations = {}
+local lang = "en"
+
+local function loadTranslations()
+    local translationsFile = "translations.json"
+    local file = LoadResourceFile(GetCurrentResourceName(), translationsFile)
+    if file then
+        translations = json.decode(file)
+        if translations then
+            print("Translations loaded successfully.")
+        else
+            print("Failed to decode translations.")
+        end
+    else
+        print("Failed to open translations file.")
+    end
+end
+
+local function translate(lang, key)
+    return translations[lang] and translations[lang][key] or key
+end
 
 local function applyWeather()
     ClearWeatherTypePersist()
@@ -43,6 +65,7 @@ RegisterCommand("syncWeather", function()
 end, false)
 
 Citizen.CreateThread(function()
+    loadTranslations()
     while true do
         Citizen.Wait(SYNC_INTERVAL)
         TriggerServerEvent("weather:requestUpdate")
