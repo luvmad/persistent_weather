@@ -1,6 +1,6 @@
 local currentVersion = "1.0.0" -- Version actuelle du script
-local releasesURL = "https://api.github.com/repos/yourusername/yourrepository/releases/latest" -- URL de l'API GitHub pour la dernière release
-local latestReleaseURL = "https://github.com/yourusername/yourrepository/releases/latest" -- URL de la dernière version sur GitHub
+local releasesURL = "https://api.github.com/repos/luvmad/persistent_weather/releases/latest" -- URL de l'API GitHub pour la dernière release
+local latestReleaseURL = "https://github.com/luvmad/persistent_weather/releases/latest" -- URL de la dernière version sur GitHub
 
 local function checkVersion()
     PerformHttpRequest(releasesURL, function(statusCode, response, headers)
