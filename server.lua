@@ -1,11 +1,30 @@
 local json = require "json"
-local translations = require "translations"
 
 local weatherFile = "weather_data.json"
+local translationsFile = "translations.json"
 local defaultWeather = { weather = "CLEAR", hour = 12, minute = 0, specialWeather = nil, specialPersistent = false }
 local currentWeather = {}
+local translations = {}
 
 local lang = "en"
+
+local function loadTranslations()
+    local file = LoadResourceFile(GetCurrentResourceName(), translationsFile)
+    if file then
+        translations = json.decode(file)
+        if translations then
+            print("Translations loaded successfully.")
+        else
+            print("Failed to decode translations.")
+        end
+    else
+        print("Failed to open translations file.")
+    end
+end
+
+local function translate(lang, key)
+    return translations[lang] and translations[lang][key] or key
+end
 
 local function loadWeather()
     local file = io.open(weatherFile, "r")
@@ -294,6 +313,7 @@ end, false)
 
 AddEventHandler("onResourceStart", function(resourceName)
     if resourceName == GetCurrentResourceName() then
+        loadTranslations()
         loadWeather()
         syncWeather()
         syncTime()
