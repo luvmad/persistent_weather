@@ -5,30 +5,27 @@ author 'LuvMadison'
 description 'Weather and Time Management Script'
 version '1.0.0'
 
-
 server_scripts {
-    'server.lua', 
+    'server.lua'
 }
-
 
 client_scripts {
-    'client.lua', 
-    'version_check.lua'
+    'client.lua',
+    'version_check.lua',
+    'translations.lua'
 }
-
 
 files {
-    'weather_data.json', 
+    'weather_data.json'
 }
 
--- Dépendances
 dependencies {
-    'fb_ui',
+    'fb_ui'
 }
 
 exports {
     'addNotification',
-    'tmpHideNotification',
+    'tmpHideNotification'
 }
 
 lua54 'yes'
@@ -40,7 +37,6 @@ commands {
     'weatherreset',
     'syncWeather'
 }
-
 
 ace_permissions {
     'command.weather',
@@ -57,8 +53,8 @@ features {
 }
 
 metadata {
-    'author' = 'LuvMadison',
-    'description' = 'Weather and Time Management Script',
-    'version' = '1.0.0',
-    'repository' = 'https://github.com/luvmad/persistent_weather'
+    author = 'LuvMadison',
+    description = 'Weather and Time Management Script',
+    version = '1.0.0',
+    repository = 'https://github.com/luvmad/persistent_weather'
 }
