@@ -11,12 +11,12 @@ server_scripts {
 
 client_scripts {
     'client.lua',
-    'version_check.lua',
-    'translations.lua'
+    'version_check.lua'
 }
 
 files {
-    'weather_data.json'
+    'weather_data.json',
+    'translations.json'
 }
 
 dependencies {
@@ -50,11 +50,4 @@ features {
     'persistent_weather',
     'time_sync',
     'special_weather_effects'
-}
-
-metadata {
-    author = 'LuvMadison',
-    description = 'Weather and Time Management Script',
-    version = '1.0.0',
-    repository = 'https://github.com/luvmad/persistent_weather'
 }
